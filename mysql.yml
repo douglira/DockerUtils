@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+
+  mysql:
+    image: mysql
+    container_name: mysql
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_USER: douglas
+      MYSQL_PASSWORD: docker
+      MYSQL_ROOT_PASSWORD: docker
+    volumes:
+      - /home/douglas-dev/developer/docker/databases/mysql:/var/lib/mysql

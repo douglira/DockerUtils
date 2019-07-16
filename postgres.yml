@@ -1,0 +1,27 @@
+version: '3.4'
+
+services:
+
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: douglas
+      POSTGRES_PASSWORD: docker
+    volumes:
+      - /home/douglas-dev/developer/docker/databases/postgres:/var/lib/postgres/data
+
+  
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    restart: always
+    ports:
+      - 8091:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: douglas.vclira@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: pgadmindocker
+      # PGADMIN_ENABLE_TLS: 'false'

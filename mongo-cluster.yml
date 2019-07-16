@@ -1,0 +1,38 @@
+version: '3.4'
+
+services:
+
+  mongo1:
+    image: mongo
+    container_name: mongo1
+    restart: always
+    networks:
+        - mongo-cluster
+    ports:
+      - 27017:27017
+    command: mongod --replSet rs0 
+    volumes:
+      - /home/douglas-dev/developer/docker/databases/mongo-cluster/data:/data/db
+
+  mongo2:
+    image: mongo
+    container_name: mongo2
+    restart: always
+    networks:
+        - mongo-cluster
+    command: mongod --replSet rs0
+    volumes:
+      - /home/douglas-dev/developer/docker/databases/mongo-cluster/data:/data/db
+
+  mongo3:
+    image: mongo
+    container_name: mongo3
+    restart: always
+    networks:
+        - mongo-cluster
+    command: mongod --replSet rs0
+    volumes:
+      - /home/douglas-dev/developer/docker/databases/mongo-cluster/data:/data/db
+networks:
+  mongo-cluster:
+    driver: bridge

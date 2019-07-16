@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+
+  mongo:
+    image: mongo
+    container_name: mongo
+    restart: always
+    ports:
+      - 27017:27017
+    command: mongod --replSet rs0
+    volumes:
+      - /home/douglas-dev/developer/docker/databases/mongo:/data/db
